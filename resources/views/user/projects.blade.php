@@ -7,7 +7,7 @@
     <!-- Slider area -->
     <section class="slider_area row m0">
         <div class="slider_inner">
-            <div data-thumb="{{asset('images/user_image/images/slider-1.jpg')}}" data-src="{{asset('images/user_image/images/slider-1.jpg')}}">
+            <div data-thumb="{{asset('images/slider-1.jpg')}}" data-src="{{asset('images/slider-1.jpg')}}">
                 <div class="camera_caption">
                     <div class="container">
 
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div data-thumb="{{asset('images/user_image/images/slider-2.jpg')}}" data-src="{{asset('images/user_image/images/slider-2.jpg')}}">
+            <div data-thumb="{{asset('images/slider-2.jpg')}}" data-src="{{asset('images/slider-2.jpg')}}">
                 <div class="camera_caption">
                     <div class="container">
 
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div data-thumb="{{asset('images/user_image/images/slider-1.jpg')}}" data-src="{{asset('images/user_image/images/slider-1.jpg')}}">
+            <div data-thumb="{{asset('images/slider-1.jpg')}}" data-src="{{asset('images/slider-1.jpg')}}">
                 <div class="camera_caption">
                     <div class="container">
 
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div data-thumb="{{asset('images/user_image/images/slider-2.jpg')}}" data-src="{{asset('images/user_image/images/slider-2.jpg')}}">
+            <div data-thumb="{{asset('images/slider-2.jpg')}}" data-src="{{asset('images/slider-2.jpg')}}">
                 <div class="camera_caption">
                     <div class="container">
 

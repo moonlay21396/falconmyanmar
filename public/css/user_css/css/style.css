@@ -112,6 +112,7 @@ This files contents are outlined below.
   text-transform: uppercase;
   position: relative;
   margin-bottom: 20px;
+  text-align: center;
 }
 .subtittle h2:after {
   content: "";
@@ -119,8 +120,13 @@ This files contents are outlined below.
   height: 2px;
   width: 80px;
   background: #222222;
-  left: 0;
+  left: 43%;
   bottom: -22px;
+}
+
+.subtittle h1{
+  text-align: center;
+  margin-top: -50px;
 }
 .subtittle h5 {
   font: 400 14px "Roboto", sans-serif;
@@ -456,10 +462,10 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 .slider_area .slider_inner .camera_caption div h3 {
   color: #fff;
   font: 400 30px "Roboto", sans-serif;
-  padding-top: 27px;
+  /* padding-top: 27px; */
 }
 .slider_area .slider_inner .camera_caption div p {
-  padding-top: 60px;
+  padding-top: 20px;
   color: #fff;
   font: 400 14px/26px "Roboto", sans-serif;
   max-width: 750px;
@@ -2181,6 +2187,14 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   font: 400 14px/28px "Roboto", sans-serif;
   color: #fff;
 }
+.footer_about1 span.myy_address i{
+  color: #f6b60b!important;
+
+}
+.footer_about1 span.myy_address a{
+  color: #fff!important;
+
+}
 .footer_area .footer_row .footer_about address .my_address li a i {
   color: #f6b60b;
   padding-right: 20px;
@@ -2205,7 +2219,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
-  color: red;
+  color:#0c9b4c;
 }
 .footer_area .copyright_area a:hover, .footer_area .copyright_area a:focus {
   color: #fefefe;

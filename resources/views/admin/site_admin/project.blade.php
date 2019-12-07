@@ -261,7 +261,7 @@
                         reset();
                         var product=JSON.parse(data);
 
-                        //console.log(product);
+                        console.log(product);
                         $("#imgs").attr("src", product['photo_url']);
                         $('#id_edit').val(product['id']);
                         $('#update_name').val(product['name']);

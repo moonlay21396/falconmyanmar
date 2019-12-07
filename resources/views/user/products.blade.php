@@ -14,12 +14,12 @@
                 @foreach($products as $product)
                     <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="team_membar">
-                            <img src="{{asset('/upload/product/'.$product['0']['photo'])}}" alt="">
+                            <img src="{{$product['photo_url']}}" alt="">
                             <div class="team_content" style="height: 120px;">
                                 <ul>
-                                    <li><a href="{{url('/view_detail'.'/'.$product['0']['id'])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{url('/view_detail'.'/'.$product['id'])}}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
                                 </ul>
-                                <a href="3" class="name">{{$product['0']['title']}}</a>
+                                <a href="3" class="name">{{$product['title']}}</a>
                             </div>
                         </div>
                     </div>

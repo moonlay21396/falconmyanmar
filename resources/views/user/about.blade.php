@@ -15,29 +15,55 @@
     <!-- End Banner area -->
 
     <!-- About Us Area -->
+    <style>
+        h4.about_font{
+           
+        }
+    </style>
     <section class="about_us_area row">
         <div class="container">
             <div class="tittle wow fadeInUp">
                 <h2>ABOUT US</h2>
-                <h4>{!! $about_data->about_us !!}</h4>
+                <h4 class="about_font">{!! $about_data->about_us !!}</h4>
             </div>
             <div class="row about_row">
-                <div class="who_we_area col-md-4 col-sm-12">
+                <div class="who_we_area col-md-6 col-sm-12">
                     <div class="subtittle">
                         <h2>Vision</h2>
                     </div>
                     <p>{!! $about_data->vision !!}</p>
                 </div>
-                <div class="who_we_area col-md-4 col-sm-12">
+                <div class="who_we_area col-md-6 col-sm-12">
                     <div class="subtittle">
                         <h2>Mission</h2>
                     </div>
                     <p>{!! $about_data->mission !!}</p>
-                </div><div class="who_we_area col-md-4 col-sm-12">
-                    <div class="subtittle">
-                        <h2>Value</h2>
+                </div>
+                <div class="who_we_area col-md-12 col-sm-12">
+                    
+                    <br>
+                </div>
+                <style>
+                    /* .who_we_are div span{
+                        font-size: 18px!important;
+                    }
+                    .who_we_are span div span{
+                        font-size: 19px!important;
+                    } */
+                </style>
+                <div class="row about_row">
+                    <div class="col-md-1"></div>
+            <div class="who_we_are col-md-5">
+                    <img src="{{asset('images/cns-2.jpg')}}" alt="" class="img-responsive" style="width:100%!important;box-shadow:0px 0px 3px #ececec;">   
                     </div>
-                    <p>{!! $about_data->value !!}</p>
+                     <div class="who_we_are col-md-6">
+                        <div class="">
+                            <h1>Value</h1>
+                        </div>
+                        <span>
+                            {!! $about_data->value !!}
+                        </span>
+                    </div>
                 </div>
 
             </div>
@@ -48,11 +74,10 @@
     <!-- call Area -->
     <section class="call_min_area">
         <div class="container">
-            <h2>+880 123 456 789</h2>
-            <p>Contact With Us. We are the top Construction Company. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h2>+959 964911300</h2>
+            <p>Contact With Us. We are one of the best services companies.</p>
             <div class="call_btn">
-                <a href="#" class="button_all">GET IN TOUCH</a>
-                <a href="#" class="button_all">QUICK QUOTE</a>
+                <a href="{{url('contact')}}" class="button_all">Contact Us</a>
             </div>
         </div>
     </section>
@@ -65,10 +90,11 @@
                 <h2>Our Features</h2>
                 <h4>{!! $about_data->our_feature !!}</h4>
             </div>
+            <br>
             <div class="feature_row row">
                 <div class="col-md-12 feature_content">
                     <div class="subtittle">
-                        <h2>WHY CHOOSE US</h2>
+                        <h1>WHY CHOOSE US</h1>
                         <h5>{!! $about_data->why_choose_us_text !!}</h5>
                     </div>
                 </div>
@@ -108,27 +134,10 @@
     </section>
     <!-- End Our Features Area -->
 
-    <!-- Our Partners Area -->
-    <section class="our_partners_area">
-        <div class="book_now_aera">
-            <div class="container">
-                <div class="row book_now">
-                    <div class="col-md-10 booking_text">
-                        <h4>Booking now if you need build your dream home.</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="col-md-2 p0 book_bottun">
-                        <a href="#" class="button_all">book now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Our Partners Area -->
 
 
     <!-- Our Team Area -->
-    <section class="our_team_area">
+    <section class="our_team_area" style="margin-top:-450px";>
         <div class="container">
             <div class="tittle wow fadeInUp">
                 <h2>Our Team</h2>

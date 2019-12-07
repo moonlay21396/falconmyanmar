@@ -11,17 +11,20 @@
             <div class="col-md-9 rightborder" >
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{asset('/upload/product/'.$product_detail->photo)}}" width="300px" height="300px" alt="">
+                        <img src="{{$product_detail['photo_url']}}" width="300px" height="300px" alt="">
                     </div>
                     <div class="col-md-6">
-                        <h3>{{$product_detail->title}}</h3>
+                        <h3>{{$product_detail['title']}}</h3>
                         <hr>
-                        <p>Categories:
+                        <p>
+                            Category: {{$product_detail->category_id}}
+                        </p>
 {{--                            <br>  Tags: <a href="#">Fire Extinguisher</a> , <a href="#">Home Safety Kit</a></p>--}}
                         <hr>
                         <p>
                             {!! $product_detail->detail !!}
-                        </p>
+                        </p><br>
+                        <a href="{{$product_detail->pdf_url}}" target="_blank" class="button_all btn-sm pull-right">Download PDF</a>
                     </div>
                 </div>
 
@@ -40,83 +43,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Model No.</td>
-                                <td>{{$product_detail->model_no}}</td>
-                            </tr>
-                            <tr>
-                                <td>Part No.</td>
-                                <td>{{$product_detail->part_no}}</td>
-                            </tr>
-                            <tr>
-                                <td>Capacity</td>
-                                <td>{{$product_detail->capacity}}</td>
-                            </tr>
-                            <tr>
-                                <td>Type of Extinguishant</td>
-                                <td>{{$product_detail->type_of_extinguishant}}</td>
-                            </tr>
-                            <tr>
-                                <td>Type</td>
-                                <td>{{$product_detail->type}}</td>
-                            </tr>
-                            <tr>
-                                <td>Pressurised Agent</td>
-                                <td>{{$product_detail->pressurised_agent}}</td>
-                            </tr>
-                            <tr>
-                                <td>Working Pressure</td>
-                                <td>{{$product_detail->working_pressure}}</td>
-                            </tr>
-                            <tr>
-                                <td>Test Pressure</td>
-                                <td>{{$product_detail->test_pressure}}</td>
-                            </tr>
-                            <tr>
-                                <td>Temperature Range</td>
-                                <td>{{$product_detail->temperature_range}}</td>
-                            </tr>
-                            <tr>
-                                <td>Discharge Time (approx.)</td>
-                                <td>{{$product_detail->discharge_time}}</td>
-                            </tr>
-                            <tr>
-                                <td>Overall Height</td>
-                                <td>{{$product_detail->overall_height}}</td>
-                            </tr>
-                            <tr>
-                                <td>Cylinder Diameter</td>
-                                <td>{{$product_detail->cylinder_diameter}}</td>
-                            </tr>
-                            <tr>
-                                <td>Approx. Full Weight</td>
-                                <td>{{$product_detail->full_weight}}</td>
-                            </tr>
-                            <tr>
-                                <td>Body Material</td>
-                                <td>{{$product_detail->body_material}}</td>
-                            </tr>
-                            <tr>
-                                <td>Finishing</td>
-                                <td>{{$product_detail->finishing}}</td>
-                            </tr>
-                            <tr>
-                                <td>Class of Fire</td>
-                                <td>{{$product_detail->class_of_fire}}</td>
-                            </tr>
-                            <tr>
-                                <td>Fire Rating</td>
-                                <td>{{$product_detail->fire_rating}}</td>
-                            </tr>
-                            <tr>
-                                <td>Manufactured & Approved</td>
-                                <td>{{$product_detail->manufactured_and_approved}}</td>
-                            </tr>
-                            <tr>
-                                <td>Throw Range Discharge</td>
-                                <td>{{$product_detail->throw_range_discharge}}</td>
-                            </tr>
-
+                                {!! $product_detail->summertable !!}
                             </tbody>
                         </table>
                     </div>

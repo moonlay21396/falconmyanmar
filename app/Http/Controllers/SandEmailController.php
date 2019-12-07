@@ -8,7 +8,7 @@ class SandEmailController extends Controller
 {
     function index()
     {
-        
+        return view('user.contact');
     }
 
     function send(Request $request)
@@ -30,7 +30,7 @@ class SandEmailController extends Controller
         $message = $request->get('message');
         $date = date('Y-m-d');
 
-        $to = "zay0935@gmail.com";
+        $to = "ppa@falconmyanmar.com";
 
         $body = 'Hello, <br><br>
 
@@ -60,7 +60,8 @@ class SandEmailController extends Controller
 
         if (mail($to, $subject, $body, $headers)) {
 
-            echo '<div class="alert alert-success form-alert">Thank you very much for contacting us.</div>';
+            // echo '<div class="alert alert-success form-alert">Thank you very much for contacting us.</div>';
+            return redirect('/contact');
 
         } else{
 

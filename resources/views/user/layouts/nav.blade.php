@@ -2,10 +2,11 @@
     <div class="container">
         <!-- searchForm -->
         <div class="searchForm">
-            <form action="#" class="row m0">
+        <form action="{{url('/search_product')}}" class="row m0" method="post">
+            {{csrf_field()}}
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="search" name="search" class="form-control" placeholder="Type & Hit Enter">
+                    <input type="text" name="search" class="form-control" placeholder="Type & Hit Enter">
                     <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
                 </div>
             </form>
@@ -19,7 +20,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/user_image/images/logo.png')}}" alt=""></a>
+                <style>
+                    @media(max-width: 991px){
+                        .navbar-brand img{
+                            width:40%;
+                            margin-top: -20px!important;
+                        }
+                    }
+                </style>
+                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/user_image/images/logo_only.png')}}" alt="" width="60%" style="margin-top:-40px;"></a>
             </div>
         </div>
 
@@ -33,12 +42,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products</a>
                         <ul class="dropdown-menu other_dropdwn">
                             @foreach($categories as $category)
-                                <li><a href="{{url('/products'.'/'.$category->id)}}">{{$category->name}}</a></li>
-                                @endforeach
+                                <li><a href="{{url('/products'.'/'.$category->id)}}">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="{{url('/projects')}}">Our Projects</a></li>
                     <li><a href="{{url('/contact')}}">Contact Us</a></li>
+                    <li><a href="{{url('/downloads')}}">Downloads</a></li>
                     <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

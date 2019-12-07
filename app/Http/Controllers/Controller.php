@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\About;
 use App\Category;
 use App\CategoryProduct;
+use App\Download;
+use App\Card;
+use App\Banner;
 use App\CustomClass\OurteamData;
 use App\CustomClass\Path;
 use App\CustomClass\ProjectData;
+use App\CustomClass\DownloadData;
+use App\CustomClass\CardData;
 use App\Ourteam;
 use App\Product;
 use App\CustomClass\ProductData;
@@ -18,6 +23,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -28,6 +34,10 @@ class Controller extends BaseController
         $categories = Category::all();
 
         $about_data = About::findOrFail(1);
+
+        $cards = Card::orderBy('id','desc')->get();
+
+        $banner = Banner::orderBy('id', 'desc')->get();
 
         $projects=Project::orderBy('id', 'desc')->limit(3)->get();
         $limit_arr=[];
@@ -42,7 +52,9 @@ class Controller extends BaseController
             'categories'=>$categories,
             'about_data'=>$about_data,
             'projects_data'=>$limit_arr,
-            'slide_photo'=>$slide_photo
+            'slide_photo'=>$slide_photo,
+            'cards_data' => $cards,
+            'banner' => $banner
         ]);
     }
 
@@ -50,13 +62,14 @@ class Controller extends BaseController
     {
         $categories = Category::all();
         $category_name = Category::findOrFail($id);
-        $product_id = CategoryProduct::where('category_id',$id)->get();
+        $product_id = Product::where('category_id',$id)->get();
         $arr = [];
         foreach ($product_id as $data){
-            $products = Product::where('id',$data->product_id)->get();
-            array_push($arr,$products);
+            $products = new ProductData($data->id);
+            array_push($arr,$products->getProductData());
         }
-//return $category_name->name;
+        // return $arr;
+        // return $category_name->name;
         return view('user.products')->with([
                 'categories'=>$categories,
                 'products'=>$arr,
@@ -68,12 +81,14 @@ class Controller extends BaseController
     {
         $categories = Category::all();
 
-        $product_obj = new ProductData($id);
-        $product_detail = $product_obj->getProductData();
-
+        // $category_name = Category::findOrFail($id);
+        $product_id = Product::where('id', $id)->first();
+        $products = new ProductData($product_id->id);
+        $product_detail = $products->getProductData();
+        // return $product_detail;
         return view('user.view_detail')->with([
             'categories'=>$categories,
-            'product_detail'=>$product_detail
+            'product_detail'=> $product_detail
         ]);
     }
 
@@ -132,5 +147,37 @@ class Controller extends BaseController
         return view('user.contact')->with([
             'categories'=>$categories,
         ]);
+    }
+
+    public function search_product(Request $request){
+        $categories = Category::all();
+
+        $search_name = $request->get('search');
+        $search_products=Product::where('title', 'LIKE', "%$search_name%")->get();
+        $search_product_arr=[];
+        foreach ($search_products as $data){
+            $search_products_data=new ProductData($data->id);
+            array_push($search_product_arr,$search_products_data->getProductData());
+        }
+        // return $search_product_arr;
+        return view('user.search_product')->with([
+            'search'=>$search_product_arr,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function pdf_download(){
+        $downloads = Download::orderBy('id','desc')->paginate(10);
+        $arr=[];
+        foreach ($downloads as $data){
+            $download_data=new DownloadData($data->id);
+            array_push($arr,$download_data->getDownloadData());
+        }
+        $categories = Category::all();
+        return view('user.downloads')->with([
+            'categories'=>$categories,
+            'pdf_downloads'=>$arr,
+            'downloads'=>$downloads
+    ]);
     }
 }

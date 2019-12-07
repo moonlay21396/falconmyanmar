@@ -15,6 +15,8 @@ Route::get('/', 'Controller@home');
 
 Route::get('/about','Controller@about');
 
+Route::post('/search_product','Controller@search_product');
+
 Route::get('/projects','Controller@projects');
 
 Route::get('/products/{id}','Controller@product');
@@ -27,6 +29,9 @@ Route::get('/story',function (){
 Route::get('/contact','Controller@contact');
 Route::post('/sendemail/send','SandEmailController@send');
 
+//Download
+Route::get('/downloads','Controller@pdf_download');
+
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
@@ -36,10 +41,19 @@ Route::get('logout','Auth\LoginController@logout')->middleware('auth');
 
 Route::group(['middleware'=>['auth']],function()
 {
+// cateogory
+    Route::get('/admin/category', 'CategoryController@index');
+    Route::post('/admin/insert_category', 'CategoryController@store');
+    Route::get('/get_all_category', 'CategoryController@get_all_category');
+    Route::get('/edit/category/{id}', 'CategoryController@edit');
+    Route::post('/update/category', 'CategoryController@update');
+    Route::get('/admin/delete/cat_product/{id}', 'CategoryController@destroy_cat_product');
+    Route::delete('/admin/delete/category/{id}', 'CategoryController@destroy_category');
+    
 
 //    product
     Route::post('/insert/product','ProductController@store');
-    Route::post('/get_all_product','ProductController@get_all_product');
+    Route::get('/get_all_product','ProductController@get_all_product');
     Route::post('/edit/product/{id}','ProductController@edit');
     Route::post('/update/product','ProductController@update');
     Route::post('/delete/product/{id}','ProductController@destroy');
@@ -80,4 +94,37 @@ Route::group(['middleware'=>['auth']],function()
     Route::post('/update/slide_photo','SlideController@update');
     Route::get('/delete/slide_photo/{id}','SlideController@destroy');
 
+//hompage
+    Route::get('/admin/card', 'CardController@index');
+    Route::post('insert/card', 'CardController@store');
+    Route::post('/get_all_card', 'CardController@get_all_card');
+    Route::post('/delete/card/{id}', 'CardController@destroy');
+    Route::post('/edit/card/{id}', 'CardController@edit');
+    Route::post('/update/card', 'CardController@update');
+
+//slide photo
+    Route::get('/admin/banner', 'BannerController@index');
+    Route::get('get_all_banner', 'BannerController@get_all_banner');
+    Route::get('/edit/banner/{id}', 'BannerController@edit');    
+    Route::post('/update/banner', 'BannerController@update');
+
+
+//pdf downloads
+    Route::get('/admin/downloads','DownloadController@index');
+    Route::post('/insert/download','DownloadController@store');
+    Route::post('/get_all_pdf', 'DownloadController@get_all_pdf');
+    Route::post('/delete/pdf/{id}', 'DownloadController@destroy');
+    Route::post('/edit/download/{id}', 'DownloadController@edit');
+    Route::post('/update/download', 'DownloadController@update');
+
+//change profile  admin/profile
+    Route::get('admin/profile', 'AdminController@index');
+    Route::post('admin/update_profile', 'AdminController@update_profile');
 });
+
+//in registerController\\\\\\\\
+use Illuminate\Support\Facades\Hash;
+Route::get('test',function(){
+    echo Hash::make("12345678");
+});
+// 

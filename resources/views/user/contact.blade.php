@@ -29,7 +29,7 @@
                             <a href="#">NO.95, Insein Road, (Near Khawel Chan Bus Stop), <br>Yangon, Myanmar. </a>
                             <a href="#">09-964911300</a>
                             <a href="#">09-777717161</a>
-                            <a href="#">85ppau@gmail.com</a>
+                            <a href="#">ppa@falconmyanmar.com</a>
                         </div>
                     </div>
                 </div>

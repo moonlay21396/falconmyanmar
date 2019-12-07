@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -74,4 +74,6 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection--}}
+
+<h1 style="text-align:center;margin-top:250px;">No Found</h1>

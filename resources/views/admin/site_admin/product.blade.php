@@ -57,13 +57,16 @@
                                         Title
                                     </th>
                                     <th>
-                                        Model No.
+                                        Category
                                     </th>
                                     <th>
-                                        Part No.
+                                        Detail
                                     </th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>
+                                        Download
+                                    </th>
+                                    <th>Action</th>
+                                    
                                     </thead>
                                     <tbody>
 
@@ -102,145 +105,46 @@
                                                 {{--                                                <label for="title">Title</label>--}}
                                                 <textarea name="title" id="title" class="form-control" rows="1" placeholder="Title" required></textarea>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="row">
+
+                                            <div class="form-group">
+                                                <select name="category_id" id="category_id" class="form-control" required>
+                                                <option value="">-- Select Category--</option>
                                                 @foreach ($category as $data)
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="category_id[]" class="custom-control-input" id="customCheck{{$data->id}}" value="{{$data->id}}">
-                                                                <label class="custom-control-label" for="customCheck{{$data->id}}">{{$data->name}}</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <option value="{{$data->id}}">{{$data->name}}</option>
                                                 @endforeach
+                                                </select>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="model_no" id="model_no" class="form-control" rows="1" placeholder="Model No." required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="part_no" id="part_no" class="form-control" rows="1" placeholder="Part No." required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="capacity" id="capacity" class="form-control" rows="1" placeholder="Capacity" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="type_of_extinguishant" id="type_of_extinguishant" class="form-control" rows="1" placeholder="Type of Extinguishant" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="type" id="type" class="form-control" rows="1" placeholder="Type" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="pressurised_agent" id="pressurised_agent" class="form-control" rows="1" placeholder="Pressurised Agent" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="working_pressure" id="working_pressure" class="form-control" rows="1" placeholder="Working Pressure" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="test_pressure" id="test_pressure" class="form-control" rows="1" placeholder="Test Pressure" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="temperature_range" id="temperature_range" class="form-control" rows="1" placeholder="Temperatrue Range" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="discharge_time" id="discharge_time" class="form-control" rows="1" placeholder="Discharge Time" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="overall_height" id="overall_height" class="form-control" rows="1" placeholder="Overall Height" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="cylinder_diameter" id="cylinder_diameter" class="form-control" rows="1" placeholder="Cylinder Diameter" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="full_weight" id="full_weight" class="form-control" rows="1" placeholder="Full Weight" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="body_material" id="body_material" class="form-control" rows="1" placeholder="Body Material" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="finishing" id="finishing" class="form-control" rows="1" placeholder="Finishing" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="class_of_fire" id="class_of_fire" class="form-control" rows="1" placeholder="Class of Fire" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="fire_rating" id="fire_rating" class="form-control" rows="1" placeholder="Fire Rating" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="manufactured_and_approved" id="manufactured_and_approved" class="form-control" rows="1" placeholder="Manufactured and Approved" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="throw_range_discharge" id="throw_range_discharge" class="form-control" rows="1" placeholder="Thow Range Discharge" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{-- <label for="des">Description</label> --}}
-                                        <textarea name="detail" rows="8" class="form-control" id="summernote" required></textarea>
+                                        <textarea name="detail" rows="8" class="form-control" id="detail" required></textarea>
+                                    </div>
+                                    
+                                </div>
+                            </div><br>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{-- <label for="des">Description</label> --}}
+                                        <textarea name="table" rows="8" class="form-control" id="table" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="btn btn-primary upload_btn">
+                                        Upload PDF<input type="file" id="update_pdf" accept="application/pdf" name="pdf" class="uploadFile img" value="Upload File" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    </label>
                                     </div>
                                 </div>
                             </div>
@@ -282,134 +186,49 @@
                                                 {{--                                                <label for="title">Title</label>--}}
                                                 <textarea name="title" id="update_title" class="form-control" rows="1" placeholder="Title" required></textarea>
                                             </div>
+
+                                            <div class="form-group">
+                                                <select name="category" id="update_category" class="form-control" required>
+                                                <option value="">-- Select Category--</option>
+                                                @foreach ($category as $data)
+                                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="model_no" id="update_model_no" class="form-control" rows="1" placeholder="Model No." required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="part_no" id="update_part_no" class="form-control" rows="1" placeholder="Part No." required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="capacity" id="update_capacity" class="form-control" rows="1" placeholder="Capacity" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="type_of_extinguishant" id="update_type_of_extinguishant" class="form-control" rows="1" placeholder="Type of Extinguishant" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="type" id="update_type" class="form-control" rows="1" placeholder="Type" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="pressurised_agent" id="update_pressurised_agent" class="form-control" rows="1" placeholder="Pressurised Agent" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="working_pressure" id="update_working_pressure" class="form-control" rows="1" placeholder="Working Pressure" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="test_pressure" id="update_test_pressure" class="form-control" rows="1" placeholder="Test Pressure" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="temperature_range" id="update_temperature_range" class="form-control" rows="1" placeholder="Temperatrue Range" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="discharge_time" id="update_discharge_time" class="form-control" rows="1" placeholder="Discharge Time" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="overall_height" id="update_overall_height" class="form-control" rows="1" placeholder="Overall Height" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="cylinder_diameter" id="update_cylinder_diameter" class="form-control" rows="1" placeholder="Cylinder Diameter" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="full_weight" id="update_full_weight" class="form-control" rows="1" placeholder="Full Weight" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="body_material" id="update_body_material" class="form-control" rows="1" placeholder="Body Material" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="finishing" id="update_finishing" class="form-control" rows="1" placeholder="Finishing" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="class_of_fire" id="update_class_of_fire" class="form-control" rows="1" placeholder="Class of Fire" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="fire_rating" id="update_fire_rating" class="form-control" rows="1" placeholder="Fire Rating" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="manufactured_and_approved" id="update_manufactured_and_approved" class="form-control" rows="1" placeholder="Manufactured and Approved" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--                                                <label for="title">Title</label>--}}
-                                        <textarea name="throw_range_discharge" id="update_throw_range_discharge" class="form-control" rows="1" placeholder="Thow Range Discharge" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{-- <label for="des">Description</label> --}}
                                         <textarea name="detail" rows="8" class="form-control" id="update_detail" required></textarea>
                                     </div>
+                                    
+                                </div>
+                            </div><br>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{-- <label for="des">Description</label> --}}
+                                        <textarea name="table" rows="8" class="form-control" id="update_table" required></textarea>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="btn btn-primary upload_btn">
+                                        Upload PDF<input type="file" id="update_pdf" accept="application/pdf" name="pdf" class="uploadFile img" value="Upload File" style="width: 0px;height: 0px;overflow: hidden;">
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <button class=" btn btn-primary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary pull-right" id="update_btn">Update</button>
                         </form>
@@ -450,7 +269,7 @@
 
             function load(){
                 $.ajax({
-                    type: "POST",
+                    type: "get",
                     url: "{{url('get_all_product')}}",
 
                     cache: false,
@@ -464,9 +283,10 @@
                                 no++,
                                 '<img src="'+data_return[i]['photo_url']+'" alt="" style="width:100px;height:100px">',
                                 data_return[i]['title'],
-                                data_return[i]['model_no'],
-                                data_return[i]['part_no'],
-                                '<button class="btn btn-info btn-sm" onclick="edit_data('+data_return[i]['id']+')" data-target="#edit_modalBox" data-toggle="modal" data-keyboard="false" data-backdrop="static">Edit</button>',
+                                data_return[i]['category_id'],
+                                 data_return[i]['detail'].replace(/(<([^>]+)>)/ig,"").length > 40 ? data_return[i]['detail'].replace(/(<([^>]+)>)/ig,"").substring(0,40)+'.....' : data_return[i]['detail'],
+                                  '<a target="_blank" class="btn btn-success" href="'+data_return[i]['pdf_url']+'">pdf</a>',
+                                '<button class="btn btn-info btn-sm" onclick="edit_data('+data_return[i]['id']+')" data-target="#edit_modalBox" data-toggle="modal" data-keyboard="false" data-backdrop="static">Edit</button>'+
                                 '<button class="btn btn-danger btn-sm" onclick="delete_data('+data_return[i]['id']+')">Delete</button>'
                             ] ).draw( false );
                         }
@@ -493,7 +313,8 @@
                     success: function(data){
                         //alert(data);
                         console.log(data);
-                        $("#summernote").summernote('reset');
+                        $("#detail").summernote('reset');
+                        $("#table").summernote('reset');
                         $('#modalBox').modal('hide');
                         toastr.success('Insert product data successful');
                         load();
@@ -517,29 +338,12 @@
                         $("#imgs").attr("src", product['photo_url']);
                         $('#id_edit').val(product['id']);
                         $('#update_title').val(product['title']);
-                        $('#update_model_no').val(product['model_no']);
-                        $('#update_part_no').val(product['part_no']);
-                        $('#update_capacity').val(product['capacity']);
-                        $('#update_type_of_extinguishant').val(product['type_of_extinguishant']);
-                        $('#update_type').val(product['type']);
-                        $('#update_pressurised_agent').val(product['pressurised_agent']);
-                        $('#update_working_pressure').val(product['working_pressure']);
-                        $('#update_test_pressure').val(product['test_pressure']);
-                        $('#update_temperature_range').val(product['temperature_range']);
-                        $('#update_discharge_time').val(product['discharge_time']);
-                        $('#update_overall_height').val(product['overall_height']);
-                        $('#update_cylinder_diameter').val(product['cylinder_diameter']);
-                        $('#update_full_weight').val(product['full_weight']);
-                        $('#update_body_material').val(product['body_material']);
-                        $('#update_finishing').val(product['finishing']);
-                        $('#update_class_of_fire').val(product['class_of_fire']);
-                        $('#update_fire_rating').val(product['fire_rating']);
-                        $('#update_manufactured_and_approved').val(product['manufactured_and_approved']);
-                        $('#update_throw_range_discharge').val(product['throw_range_discharge']);
+                        $('#update_category').val(product['category_id']);
                         $('#update_detail').summernote({
                             height : "150px",
                             toolbar: [
                                 ['style', ['style','bold', 'italic', 'underline', 'clear','fontname','fontsize']],
+                                 ['table', ['table']],
                                 ['font', ['strikethrough', 'superscript', 'subscript']],
                                 ['color', ['color']],
                                 ['para', ['ul', 'ol', 'paragraph']],
@@ -549,6 +353,20 @@
                         });
                         $('#update_detail').summernote('code',product['detail']);
 
+                        $('#update_table').summernote({
+                            height : "150px",
+                            toolbar: [
+                                ['style', ['style','bold', 'italic', 'underline', 'clear','fontname','fontsize']],
+                                 ['table', ['table']],
+                                ['font', ['strikethrough', 'superscript', 'subscript']],
+                                ['color', ['color']],
+                                ['para', ['ul', 'ol', 'paragraph']],
+                                ['height', ['height']],
+                                ['view', ['fullscreen', 'codeview', 'help']],
+                            ],
+                        });
+                        $('#update_table').summernote('code',product['summertable']);
+                        $('#update_pdf').val(product['download_link']);                                   
                         $('#edit_modalBox').modal('show');
                     }
                 });
@@ -595,14 +413,13 @@
                 }
             }
 
-
-
             // start summernote
-            $("#summernote").summernote({
+            $("#detail").summernote({
                 height : "150px",
                 placeholder: 'Detail',
                 toolbar: [
                     ['style', ['style','bold', 'italic', 'underline', 'clear','fontname','fontsize']],
+                    ['table', ['table']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
@@ -610,6 +427,21 @@
                     ['view', ['fullscreen', 'codeview', 'help']],
                 ],
             });
+
+            $("#table").summernote({
+                height : "150px",
+                placeholder: 'Data',
+                toolbar: [
+                    ['style', ['style','bold', 'italic', 'underline', 'clear','fontname','fontsize']],
+                    ['table', ['table']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+            });
+
             $(document).on('click','.note-btn',function(){
                 $(".note-group-select-from-files label").text("Upload image");
                 $(".note-group-select-from-files label").attr('class','btn btn-primary');

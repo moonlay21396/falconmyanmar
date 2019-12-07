@@ -42,38 +42,19 @@ class ProductController extends Controller
         $fileName = uniqid() . '_' . $file->getClientOriginalName();
         $file->move(public_path() . '/upload/product/', $fileName);
 
-        $category = $request->get('category_id');
-        $product_id = Product::create([
+        $pdf = $request->file('pdf');
+        $pdf_name = uniqid() . '_' . $pdf->getClientOriginalName();
+        $pdf->move(public_path('upload/product_download/'), $pdf_name);
+
+        Product::create([
             'photo'=>$fileName,
             'title'=>$request->get('title'),
-            'model_no'=>$request->get('model_no'),
-            'part_no'=>$request->get('part_no'),
-            'capacity'=>$request->get('capacity'),
-            'type_of_extinguishant'=>$request->get('type_of_extinguishant'),
-            'type'=>$request->get('type'),
-            'pressurised_agent'=>$request->get('pressurised_agent'),
-            'working_pressure'=>$request->get('working_pressure'),
-            'test_pressure'=>$request->get('test_pressure'),
-            'temperature_range'=>$request->get('temperature_range'),
-            'discharge_time'=>$request->get('discharge_time'),
-            'overall_height'=>$request->get('overall_height'),
-            'cylinder_diameter'=>$request->get('cylinder_diameter'),
-            'full_weight'=>$request->get('full_weight'),
-            'body_material'=>$request->get('body_material'),
-            'finishing'=>$request->get('finishing'),
-            'class_of_fire'=>$request->get('class_of_fire'),
-            'fire_rating'=>$request->get('fire_rating'),
-            'manufactured_and_approved'=>$request->get('manufactured_and_approved'),
-            'throw_range_discharge'=>$request->get('throw_range_discharge'),
-            'detail'=>$request->get('detail')
-        ])->id;
-
-        foreach ($category as $category_data) {
-            CategoryProduct::create([
-                'product_id'=>$product_id,
-                'category_id'=>$category_data
-            ]);
-        }
+            'category_id'=>$request->get('category_id'),
+            'detail'=>$request->get('detail'),
+            'summertable'=> $request->get('table'),
+            'download_link'=> $pdf_name
+        ]);
+        // return $request->get('table');
 
     }
 
@@ -111,62 +92,87 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $id = $request->get('id');
-        if($request->hasFile('photo')){
-            $photo = $request->file('photo');
-            $photo_name = uniqid().'_'.$photo->getClientOriginalName();
-            $photo->move(public_path('upload/product/'),$photo_name);
-            $product = Product::find($id);
-            $image_path=public_path().'/upload/product/'.$product->photo;
-            if(file_exists($image_path)){
-                unlink($image_path);
+
+        if ($request->hasFile('photo')) {
+            if ($request->hasFile('pdf')) {
+                $photo = $request->file('photo');
+                $photo_name = uniqid() . '_' . $photo->getClientOriginalName();
+                $photo->move(public_path('upload/product/'), $photo_name);
+
+                $pdf = $request->file('pdf');
+                $pdf_name = uniqid() . '_' . $pdf->getClientOriginalName();
+                $pdf->move(public_path('upload/product_download/'), $pdf_name);
+
+                $products = Product::find($id);
+                $image_path = public_path() . '/upload/product/' . $products->photo;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+                $pdf_path = public_path() . '/upload/product_download/' . $products->download_link;
+                if (file_exists($pdf_path)) {
+                    unlink($pdf_path);
+                }
+
+                Product::findOrFail($id)->update([
+                    'photo' => $photo_name,
+                    'title' => $request->get('title'),
+                    'category_id' => $request->get('category'),
+                    'detail' => $request->get('detail'),
+                    'summertable' => $request->get('table'),
+                    'download_link' => $pdf_name
+                ]);
+            } else {
+                $photo = $request->file('photo');
+                $photo_name = uniqid() . '_' . $photo->getClientOriginalName();
+                $photo->move(public_path('upload/product/'), $photo_name);
+
+                $products = Product::find($id);
+                $image_path = public_path() . '/upload/product/' . $products->photo;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+        
+
+                Product::findOrFail($id)->update([
+                    'photo' => $photo_name,
+                    'title' => $request->get('title'),
+                    'category_id' => $request->get('category'),
+                    'detail' => $request->get('detail'),
+                    'summertable' => $request->get('table')
+                ]);
             }
+        } elseif ($request->hasFile('pdf')) {
+            //  $photo = $request->file('photo');
+            // $photo_name = uniqid() . '_' . $photo->getClientOriginalName();
+            // $photo->move(public_path('upload/pdf/pdf_photo/'), $photo_name);
+
+            $pdf = $request->file('pdf');
+            $pdf_name = uniqid() . '_' . $pdf->getClientOriginalName();
+            $pdf->move(public_path('upload/product_download/'), $pdf_name);
+
+            $products = Product::find($id);
+            // $image_path = public_path() . '/upload/pdf/pdf_photo/' . $downloads->photo;
+            // if (file_exists($image_path)) {
+            //     unlink($image_path);
+            // }
+            $pdf_path = public_path() . '/upload/product_download/' . $products->download_link;
+            if (file_exists($pdf_path)) {
+                unlink($pdf_path);
+            }
+
             Product::findOrFail($id)->update([
-                'photo'=>$photo_name,
-                'title'=>$request->get('title'),
-                'model_no'=>$request->get('model_no'),
-                'part_no'=>$request->get('part_no'),
-                'capacity'=>$request->get('capacity'),
-                'type_of_extinguishant'=>$request->get('type_of_extinguishant'),
-                'type'=>$request->get('type'),
-                'pressurised_agent'=>$request->get('pressurised_agent'),
-                'working_pressure'=>$request->get('working_pressure'),
-                'test_pressure'=>$request->get('test_pressure'),
-                'temperature_range'=>$request->get('temperature_range'),
-                'discharge_time'=>$request->get('discharge_time'),
-                'overall_height'=>$request->get('overall_height'),
-                'cylinder_diameter'=>$request->get('cylinder_diameter'),
-                'full_weight'=>$request->get('full_weight'),
-                'body_material'=>$request->get('body_material'),
-                'finishing'=>$request->get('finishing'),
-                'class_of_fire'=>$request->get('class_of_fire'),
-                'fire_rating'=>$request->get('fire_rating'),
-                'manufactured_and_approved'=>$request->get('manufactured_and_approved'),
-                'throw_range_discharge'=>$request->get('throw_range_discharge'),
-                'detail'=>$request->get('detail')
+                'title' => $request->get('title'),
+                'category_id' => $request->get('category'),
+                'detail' => $request->get('detail'),
+                'summertable' => $request->get('table'),
+                'download_link' => $pdf_name
             ]);
-        }else {
+        } else {
             Product::findOrFail($id)->update([
-                'title'=>$request->get('title'),
-                'model_no'=>$request->get('model_no'),
-                'part_no'=>$request->get('part_no'),
-                'capacity'=>$request->get('capacity'),
-                'type_of_extinguishant'=>$request->get('type_of_extinguishant'),
-                'type'=>$request->get('type'),
-                'pressurised_agent'=>$request->get('pressurised_agent'),
-                'working_pressure'=>$request->get('working_pressure'),
-                'test_pressure'=>$request->get('test_pressure'),
-                'temperature_range'=>$request->get('temperature_range'),
-                'discharge_time'=>$request->get('discharge_time'),
-                'overall_height'=>$request->get('overall_height'),
-                'cylinder_diameter'=>$request->get('cylinder_diameter'),
-                'full_weight'=>$request->get('full_weight'),
-                'body_material'=>$request->get('body_material'),
-                'finishing'=>$request->get('finishing'),
-                'class_of_fire'=>$request->get('class_of_fire'),
-                'fire_rating'=>$request->get('fire_rating'),
-                'manufactured_and_approved'=>$request->get('manufactured_and_approved'),
-                'throw_range_discharge'=>$request->get('throw_range_discharge'),
-                'detail'=>$request->get('detail')
+                'title' => $request->get('title'),
+                'category_id' => $request->get('category'),
+                'detail' => $request->get('detail'),
+                'summertable' => $request->get('table')
             ]);
         }
     }
@@ -185,7 +191,6 @@ class ProductController extends Controller
             unlink($image_path);
         }
         $product->delete();
-        CategoryProduct::where('product_id',$id)->delete();
     }
 
     public function get_all_product()
@@ -196,6 +201,7 @@ class ProductController extends Controller
             $product_data=new ProductData($data->id);
             array_push($arr,$product_data->getProductData());
         }
+        // return $arr;
         return json_encode($arr);
     }
 }

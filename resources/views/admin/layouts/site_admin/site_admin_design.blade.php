@@ -41,8 +41,6 @@
 </div>
 
 
-
-
 <!--   Core JS Files   -->
 <script src="{{url('js/admin_js/core/jquery.min.js')}}"></script>
 <script src="{{url('js/admin_js/core/popper.min.js')}}"></script>

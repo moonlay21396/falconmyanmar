@@ -18,10 +18,28 @@
                     <p>Add Product</p>
                 </a>
             </li>
+            <li class="nav-item @if($url=="category") active @endif">
+                <a class="nav-link" href="{{url('admin/category')}}">
+                    <i class="material-icons">event</i>
+                    <p>Add Category</p>
+                </a>
+            </li>
             <li class="nav-item @if($url=="project") active @endif">
                 <a class="nav-link" href="{{url('admin/project')}}">
                     <i class="material-icons">event</i>
                     <p>Add Project</p>
+                </a>
+            </li>
+            <li class="nav-item @if($url=="banner") active @endif">
+                <a class="nav-link" href="{{url('admin/banner')}}">
+                    <i class="material-icons">event</i>
+                    <p>Add Banner</p>
+                </a>
+            </li>
+             <li class="nav-item @if($url=="card") active @endif">
+                <a class="nav-link" href="{{url('admin/card')}}">
+                    <i class="material-icons">event</i>
+                    <p>Home Page</p>
                 </a>
             </li>
             <li class="nav-item @if($url=="about") active @endif">
@@ -45,7 +63,19 @@
             <li class="nav-item @if($url=="slide_photo") active @endif">
                 <a class="nav-link" href="{{url('admin/slide_photo')}}">
                     <i class="material-icons">event</i>
-                    <p>Add Slide Photo</p>
+                    <p>Our Parter Company</p>
+                </a>
+            </li>
+             <li class="nav-item @if($url=="pdf_downloads") active @endif">
+                <a class="nav-link" href="{{url('admin/downloads')}}">
+                    <i class="material-icons">event</i>
+                    <p>Create PDF</p>
+                </a>
+            </li>
+             <li class="nav-item @if($url=="profile") active @endif">
+                <a class="nav-link" href="{{url('admin/profile')}}">
+                    <i class="material-icons">event</i>
+                    <p>Change Profile</p>
                 </a>
             </li>
             <li class="nav-item">
